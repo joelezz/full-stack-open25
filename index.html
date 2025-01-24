@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mermaid Sequence Diagram</title>
+  </head>
+  <body>
+    <pre class="mermaid">
+sequenceDiagram
+    participant User
+    participant Browser
+    participant Server
+
+    User ->> Browser: Enter URL (https://studies.cs.helsinki.fi/exampleapp/spa)
+    Browser ->> Server: GET /spa
+    activate Server
+    Server -->> Browser: HTML document
+    deactivate Server
+
+    Browser ->> Server: GET /main.css
+    activate Server
+    Server -->> Browser: CSS file
+    deactivate Server
+
+    Browser ->> Server: GET /spa.js
+    activate Server
+    Server -->> Browser: JavaScript file
+    deactivate Server
+
+    Browser ->> Server: GET /data.json
+    activate Server
+    Server -->> Browser: JSON data
+    deactivate Server
+
+    Browser ->> Browser: Process JSON and update DOM
+    Browser -->> User: Render updated web page
+    </pre>
+
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+      
+      // Initialize Mermaid
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>
